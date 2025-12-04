@@ -227,10 +227,10 @@
   .scrollable-table-section {
     max-height: 600px;
     overflow-y: auto;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px 0;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
     width: 100%;
     box-sizing: border-box;
   }
@@ -418,10 +418,10 @@
 
     /* Tables */
     .scrollable-table-section {
-      padding: 15px 5px;
-      margin: 15px 0;
+      padding: 0;
+      margin: 0;
       overflow-x: auto;
-      border-radius: 8px;
+      border-radius: 0;
     }
     
     .table {
@@ -557,9 +557,37 @@
     }
     
     .scrollable-table-section {
-      padding: 10px 3px;
-      margin: 10px 0;
+      padding: 0;
+      margin: 0;
     }
+  }
+
+  /* Remove all table borders */
+  .table,
+  .table th,
+  .table td {
+    border: none !important;
+  }
+
+  /* Center align all table content */
+  .table th,
+  .table td {
+    text-align: center !important;
+  }
+
+  /* Reduce line spacing in table headers */
+  .table th {
+    line-height: 1.1 !important;
+  }
+
+  /* Ensure consistent header sizing and prevent wrapping */
+  .table th .sort-arrow {
+    font-size: 0.8em;
+    margin-left: 3px;
+  }
+  
+  .table th span {
+    white-space: nowrap;
   }
 
   /* Alternating row colors */
@@ -661,7 +689,7 @@
           <div class="content has-text-justified">
             <!--Averaged Table (only averaged mutli-turn)-->
             <div id="averaged-table" class="table-container">
-              <table class="table is-bordered is-hoverable is-fullwidth is-size-4" style="font-size: 0.95em;">
+              <table class="table is-hoverable is-fullwidth is-size-4" style="font-size: 0.95em;">
                 <thead>
                   <tr>
                     <th rowspan="2">Rank</th>
@@ -669,20 +697,20 @@
                     <th colspan="2">Multi-Turn (MT)</th>
                   </tr>
                   <tr>
-                    <th class="sortable active" onclick="sortTable('averaged', 2)"><span style="font-size: 0.7em;">Correct&amp;Secure</span><br><span style="font-size: 0.6em; color: #134686;">(higher better)</span></th>
-                    <th class="sortable" onclick="sortTable('averaged', 3)"><span style="font-size: 0.7em;">Correct&amp;Insecure</span><br><span style="font-size: 0.6em; color: #134686;">(lower better)</span></th>
+                    <th class="sortable active" onclick="sortTable('averaged', 2)"><span style="font-size: 0.7em;">Correct&amp;Secure (%)</span><br><span style="font-size: 0.6em; color: #134686; line-height: 0.8;">(higher better)</span></th>
+                    <th class="sortable" onclick="sortTable('averaged', 3)"><span style="font-size: 0.7em;">Correct&amp;Insecure (%)</span><br><span style="font-size: 0.6em; color: #134686; line-height: 0.8;">(lower better)</span></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>1</td>
-                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;"> Aider + GPT-5<sup>T</sup></td>
+                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;"> GPT-5<sup>T</sup><strong>(Aider)</strong></td>
                     <td>35.8</td>
                     <td>13.0</td>
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;"> OpenHands + GPT-5<sup>T</sup></td>
+                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;">GPT-5<sup>T</sup><strong>(OpenHands)</strong></td>
                     <td>34.2</td>
                     <td>15.9</td>
                   </tr>
@@ -700,7 +728,7 @@
                   </tr>
                   <tr>
                     <td>5</td>
-                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;"> Codex + GPT-5<sup>T</sup></td>
+                    <td><img src="./resources/models/openai.png" style="width: 20px; height: 20px;">GPT-5<sup>T</sup><strong>(Codex)</strong></td>
                     <td>36.2</td>
                     <td>15.0</td>
                   </tr>
@@ -890,7 +918,7 @@
         </div>
         <!--Detailed Table (editing/refactoring/expansion)-->
         <div id="detailed-table" class="table-container">
-          <table class="table is-bordered is-hoverable is-fullwidth is-size-4" style="font-size: 0.95em;">
+          <table class="table is-hoverable is-fullwidth is-size-4" style="font-size: 0.95em;">
             <thead>
               <tr>
                 <th rowspan="2">Rank</th>
@@ -901,14 +929,14 @@
                 <th colspan="2">MT-Refactor</th>
               </tr>
               <tr>
-                <th class="sortable" onclick="sortTable('detailed', 2)">C&amp;S <span class="sort-arrow">↓</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 3)">C&amp;I <span class="sort-arrow">↑</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 4)">C&amp;S <span class="sort-arrow">↓</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 5)">C&amp;I <span class="sort-arrow">↑</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 6)">C&amp;S <span class="sort-arrow">↓</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 7)">C&amp;I <span class="sort-arrow">↑</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 8)">C&amp;S <span class="sort-arrow">↓</span></th>
-                <th class="sortable" onclick="sortTable('detailed', 9)">C&amp;I <span class="sort-arrow">↑</span></th>
+                <th class="sortable" onclick="sortTable('detailed', 2)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;S (%) <span class="sort-arrow">↓</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 3)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;I (%) <span class="sort-arrow">↑</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 4)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;S (%) <span class="sort-arrow">↓</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 5)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;I (%) <span class="sort-arrow">↑</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 6)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;S (%) <span class="sort-arrow">↓</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 7)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;I (%) <span class="sort-arrow">↑</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 8)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;S (%) <span class="sort-arrow">↓</span></span></th>
+                <th class="sortable" onclick="sortTable('detailed', 9)"><span style="font-size: 0.7em; white-space: nowrap;">C&amp;I (%) <span class="sort-arrow">↑</span></span></th>
               </tr>
             </thead>
             <tbody>
@@ -1336,12 +1364,15 @@
           </table>
         </div>
       </div>
+      
       <p style="font-size: 0.9em; text-align: left;">
-        "T denotes thinking"
+        1. "T denotes thinking"
         <br>
-        "C&S: Correctness & Seccure/ C&I: Correct & Insecure"
+        2. "C&S: Correctness & Seccure/ C&I: Correct & Insecure"
         <br>
-        “All models show sharp declines in correctness & security when moving from single-turn to multi-turn coding — even top models drop by 20–27%.”
+        3.“All models show sharp declines in correctness & security when moving from single-turn to multi-turn coding, <strong>even top models drop by 20-27%.</strong>”
+        <br>
+        4. "Evaluation with Agentic scaffolds are highlithed in <strong>(Aider, Codex, OpenHands)</strong>"
         <br>
       </p>
     </div>
@@ -1376,31 +1407,31 @@
 
 <div class="notification is-info is-light">
   <div class="container">
-    <div class="content has-text-left" style="font-size: 1.1em; line-height: 1.8;">
+    <div class="content has-text-left" style="font-size: 0.95em; line-height: 1;">
       <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem; color: #363636;">
         <span style="color: #3396D3;">MT-Sec</span> at a Glance
       </h2>
       
       <div style="color: #363636;">
         <p style="margin-bottom: 1rem;">
-          📊 <strong>2,376 multi-turn coding tasks</strong> across <strong>6 programming languages</strong>, covering <strong>27 critical security vulnerabilities (CWEs)</strong>
+          ‣ <strong>2,376 multi-turn coding tasks</strong> across <strong>6 programming languages</strong>, covering <strong>27 critical security vulnerabilities (CWEs)</strong>
         </p>
 
         <p style="margin-bottom: 1rem;">
-          Built on top of <strong>SECCODEPLT</strong> and <strong>BAXBENCH</strong> benchmarks
+          ‣ Built on top of <strong>SECCODEPLT</strong> and <strong>BAXBENCH</strong> benchmarks
         </p>
 
         <p style="margin-bottom: 1rem;">
-          <strong>Captures three common multi-turn coding interaction types:</strong>
+          ‣ <strong>Captures three common multi-turn coding interaction types:</strong>
         </p>
         <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-          <li style="margin-bottom: 0.5rem;"><strong>Expansion</strong> – gradually adding features and functionality</li>
-          <li style="margin-bottom: 0.5rem;"><strong>Editing</strong> – iterative fixes, modifications, and pivots</li>
-          <li style="margin-bottom: 0.5rem;"><strong>Refactoring</strong> – restructuring code for clarity and modularity</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Expansion</strong> - gradually adding features and functionality</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Editing</strong> - iterative fixes, modifications, and pivots</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Refactoring</strong> - restructuring code for clarity and modularity</li>
         </ul>
 
         <p style="margin-bottom: 0;">
-          Comprehensive evaluation of <strong>32 state-of-the-art LLMs</strong> and <strong>3 coding agents</strong> (Aider, Codex, OpenHands)
+          ‣ Comprehensive evaluation of <strong>32 state-of-the-art LLMs</strong> and <strong>3 coding agents</strong> (Aider, Codex, OpenHands)
         </p>
       </div>
     </div>
@@ -1418,7 +1449,7 @@
         <figure>
           <img src="./resources/MT-SEC-built.png" style="width: 100%; height: auto;">
           <figcaption>
-            We transformed single-turn secure coding tasks into realistic 3-turn conversations that mimic how developers actually code. Using an LLM with consitency guardrails, we generated multi-turn expansions, edits, and refactorings, then verified them with security experts. This preserves the original correctness and security tests while adding natural, iterative coding workflows.
+            We transformed single-turn secure coding tasks into realistic 3-turn conversations that mimic how developers actually code. Using an LLM with consitency guardrails, we generated multi-turn expansions, edits, and refactorings, then verified them with security human experts. This preserves the original correctness and security tests while simulating natural, interactive coding workflows.
           </figcaption>
         </figure>
       </div>
